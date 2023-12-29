@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Youtube.com Clone</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+        <style>
+        p{
+            font-family:Roboto,Arial;
+            margin-top:0;
+            margin-bottom:0;
+        }
+        body{
+            margin:0;
+            padding-top:80px;
+            padding-left:96px;
+            padding-right:24px;
+            background-color:rgb(248,248,248);
+            }
+            .thumbnail{
+            width:100%;
+            object-fit:cover;
+            height:100%;
+            }
+           
+               .video-title{
+                    width:100%;
+                line-height:20px;
+                font-size:14px;
+                margin-top:12px;
+                margin-bottom:10px;
+              
+                font-weight:500;
+               }
+            }
+                .video-info-grid{
+                    display:grid;
+                    grid-template-columns:50px 1fr;
+                     
+                }
+                .channel-picture{
+                  margin-top:15px;
+                  
+                }
+         .video-info{
+                  margin-top:0;
+                 
+                }
+                .profile-picture{
+                    width:36px;
+                    border-radius:50px;
+                    
+                }
+                .thumbnail-row{
+                  position:relative;
+                  margin-bottom:8px;
+                  height:250px;
+                }
+                .video-author{
+                    font-size:12px;
+                    color:rgb(96, 96, 96);
+                    margin-bottom:4px;
+                }
+                .video-stats{
+                    font-size:12px;
+                    color:rgb(96, 96, 96);
+                }
+                .video-grid{
+                    display:grid;
+                    grid-template-columns:1fr 1fr 1fr;
+                    column-gap:16px;
+                    row-gap:14px;
+                }
+                @media (max-width:750px){
+                    .video-grid{
+                        grid-template-columns:1fr 1fr;
+                    }
+                }
+                @media(min-width:751px) and (max-width:999px){
+                    .video-grid{
+                        grid-template-columns:1fr 1fr 1fr;
+                    }
+                }
+                    @media (min-width:1000px){
+                        .video-grid{
+                            grid-template-columns:1fr 1fr 1fr 1fr;
+                        }
+                    }
+                
+                .header{
+                    height:55px;
+                    display:flex;
+                    flex-direction:row;
+                    justify-content:space-between;
+                    position:fixed;
+                    top:0;
+                    left:0;
+                    right:0;
+                    background-color:white;
+                    border-bottom-width:1px;
+                    border-bottom-style:solid;
+                    border-bottom-color:rgb(228,228,228);
+                    z-index:100;
+                }
+                .left-section{
+                    align-items:center;
+                    display:flex;
+                    
+                }
+                .middle-section{
+                    flex:1;
+                    margin-left:70px;
+                    margin-right:35px;
+                    max-width:500px;
+                    display:flex;
+                    align-items:center;
+                }
+                .right-section{
+                    width:200px;
+                    margin-right:20px;
+                    display:flex;
+                    align-items:center;
+                    justify-content:space-between;
+                    flex-shrink:0;
+                }
+                .hemburger-menu{
+                    height:24px;
+                    margin-left:24px;
+                    margin-right:24px;
+                }
+                    .youtube-logo{
+                        height:20px;
+                    }
+                    .search-button,
+                    .voice-search-button,
+                    {
+                        position:relative;
+                        display:flex;
+                        justify-content:center;
+                        align-items:center;
+                    }
+                    .upload-icon-container{
+                        position:relative;
+                        display:flex;
+                        justify-content:center;
+                        align-items:center;
+                    }
+                    .search-button{
+                        height:40px;
+                        width:60px;
+                        background-color:#F7F7F7;
+                        border-width:1px;
+                        border-style:solid;
+                        border-color:rgb(192,192,192);
+                        margin-left:-1px;
+                        margin-right:10px;
+                       
+                        cursor:pointer;
+                    }
+                    .search-button .tooltip{
+                        position:absolute;
+                        background-color:gray;
+                        color:white;
+                        padding-top:4px;
+                        padding-bottom:4px;
+                        padding-right:8px;
+                        padding-left:8px;
+                        border-radius:2px;
+                        font-size:12px;
+                        bottom:-20px;
+                        opacity:0;
+                        transition:opacity 0.15s;
+                        pointer-events:none;
+                        white-space:nowrap;
+                    }
+                    
+                    .voice-search-button .tooltip{
+                        position:absolute;
+                        background-color:gray;
+                        color:white;
+                        padding-top:4px;
+                        padding-bottom:4px;
+                        padding-right:5px;
+                        padding-left:5px;
+                        border-radius:2px;
+                        font-size:12px;
+                        bottom:-23px;
+                        opacity:0;
+                        transition:opacity 0.15s;
+                        pointer-events:none;
+                        white-space:nowrap;
+                    }
+                    .search-button:hover .tooltip,
+                    .voice-search-button:hover .tooltip{
+                        opacity:1;
+                    }
+                    .youtubes-icon-container{
+                        position:relative;
+                        display:flex;
+                        justify-content:center;
+                        align-items:center;
+                    
+                    }
+                    .upload-icon-container{
+                        cursor:pointer;
+                    }
+                    
+                    }
+                    .upload-icon-container:hover .tooltip{
+                        opacity:1;
+                    }
+                    .youtubes-apps-icon-container:hover .tooltip{
+                        opacity:1;
+                    }
+                    .upload-icon-container .tooltip {
+                        position:absolute;
+                       padding-top:4px;
+                       padding-bottom:4px;
+                       padding-right:8px;
+                       padding-left:8px;
+                       border-radius:2px;
+                       background-color:gray;
+                       color:white;
+                       font-size:12px;
+                       bottom:-30px;
+                       opacity:0;
+                       transition:opacity 0.15s;
+                       pointer-events:none;
+                       white-space:nowrap
+                    }  
+                    .youtubes-apps-icon-container .tooltip{
+                        position:absolute;
+                       padding-top:4px;
+                       padding-bottom:4px;
+                       padding-right:8px;
+                       padding-left:8px;
+                       border-radius:2px;
+                       background-color:gray;
+                       color:white;
+                       font-size:12px;
+                       bottom:-30px;
+                       opacity:0;
+                       transition:opacity 0.15s;
+                       pointer-events:none;
+                       white-space:nowrap;
+                    }
+                    
+                    .voice-search-button{
+                        height:40px;
+                        width:40px;
+                        border-radius:20px;
+                         background-color:rgb(245,245,245);
+                         border:none;
+                         cursor:pointer;
+                    }
+                    .search-bar{
+                        flex:1;
+                        height:36px;
+                        padding-left:10px;
+                        font-size:16px;
+                        border-width:1px;
+                        border-style:solid;
+                        border-color:rgb(192, 192, 192);
+                        border-radius:2px;
+                        box-shadow:inset 1px 2px 3px rgba(0,0,0,0.05);
+                        width:0;
+                    }
+                    .search-bar::placeholder{
+                        font-family:Roboto, Arial;
+                        font-size:16px;
+                    }
+                    .search-icon{
+                        height:25px;
+                        
+                        
+                    }
+                    .voice-search-icon{
+                        height:24px;
+                     
+                       
+                    }
+                    .upload-icon{
+                        height:24px;
+                    }
+                    .youtubes-apps-icon{
+                        height:24px;
+                    cursor:pointer;
+                    }
+                    
+                    .notifications-icon{
+                        height:24px;
+                        
+                    }
+                    .notifications-icon-container{
+                        position:relative;
+                    }
+                    .youtube-logo-container{
+                        position:relative;
+                        
+                    }
+                    
+                    .notifications-icon-count{
+                        position:absolute;
+                        top:-3px;
+                        right:-5px;
+                        background-color:rgb(200, 0, 0);
+                        color:white;
+                        font-family:Roboto,Arial;
+                        font-size:11px;
+                        padding-right:5px;
+                        padding-left:5px;
+                        padding-top:2px;
+                        padding-bottom:2px;
+                        border-radius:10px;
+                    }
+                    .youtube-logo-region{
+                        position:absolute;
+                        top:11px;
+                        left:166px;
+                        font-family:Roboto,Arial;
+                        font-size:10px;
+                        color:#606060;
+                    }
+                    .current-user{
+                        height:32px;
+                        border-radius:20px;
+                        width:32px;
+                    }
+                    .sidebar{
+                        position:fixed;
+                        left:0;
+                        bottom:0;
+                        top:55px;
+                        background-color:white;
+                        width:72px;
+                        z-index:101;
+                        padding-top:5px;
+                    }
+                    .sidebar-link{
+                        height:74px;
+                       display:flex;
+                justify-content:center;
+                align-items:center;
+                        flex-direction:column;
+                        cursor:pointer;
+                    }
+                    
+                    .sidebar-link:hover{
+                        background-color:rgb(235,235,235);
+                    }
+                    .video-time{
+                        background-color:black;
+                        color:white;
+                        position:absolute;
+                        bottom:8px;
+                        right:5px;
+                        font-family:Roboto, Arial;
+                        font-size:12px;
+                        font-weight:500;
+                        padding-left:4px;
+                        padding-right:4px;
+                        padding-top:4px;
+                        padding-bottom:4px;
+                        border-radius:2px;
+                    }
+            .sidebar-link img{
+                height:24px;
+                margin-bottom:4px;
+                
+            }
+            .sidebar-link div{
+                font-family:Roboto,Arial;
+                font-size:10px;
+                
+            }
+                    
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <div class="left-section">
+                <img class="hemburger-menu" src="https://supersimple.dev/public/img/exercises/youtube/icons/hamburger-menu.svg">
+                <div class="youtube-log-container">
+                   <img class="youtube-logo" src="https://supersimple.dev/public/img/exercises/youtube/icons/youtube-logo.svg"> 
+                   <div class="youtube-logo-region">BD</div>
+                </div>
+            </div>
+            <div class="middle-section">
+                 <input class="search-bar" type="text" placeholder="search">
+                 <button class="search-button">
+                     <img class="search-icon" src="https://supersimple.dev/public/img/exercises/youtube/icons/search.svg">
+                     <div class="tooltip">Search</div>
+                 </button>
+                 <button class="voice-search-button">
+                     <img class="voice-search-icon" src="https://supersimple.dev/public/img/exercises/youtube/icons/voice-search-icon.svg">
+                     <div class="tooltip">Search with your voice</div>
+                 </button>
+            </div>
+            <div class="right-section">
+                <div class="upload-icon-container">
+                     <img class="upload-icon" src="https://supersimple.dev/public/img/exercises/youtube/icons/upload.svg">
+                     <div class="tooltip">Create</div>
+                </div>
+                <div class="youtubes-apps-icon-container">
+                     <img class="youtubes-apps-icon" src="https://supersimple.dev/public/img/exercises/youtube/icons/youtube-apps.svg">
+                     <div class="tooltip">YouTube apps </div>
+                </div>
+                <div class="notifications-icon-container">
+                    <img class="notifications-icon" src="https://supersimple.dev/public/img/exercises/youtube/icons/notifications.svg">
+                    <div class="notifications-icon-count">3</div>
+                    </div>
+                <img class="current-user" src="https://yt3.ggpht.com/cX42af3C9JWAJt8_xEUTh_xzfUx12ULZ5kTSr0qttbOzgZv1ipYPnnqjKsKSbTey_Z41rmBM=s88-c-k-c0x00ffffff-no-rj">
+            </div>
+        </div>
+        <div class="sidebar">
+            <div class="sidebar-link">
+                 <img src="https://supersimple.dev/public/img/exercises/youtube/icons/home.svg">
+                 <div>Home</div>
+                 </div>
+            <div class="sidebar-link">
+                <img src="https://supersimple.dev/public/img/exercises/youtube/icons/explore.svg">
+                <div>Explore</div>
+            </div>
+            <div class="sidebar-link">
+                <img src="	https://supersimple.dev/public/img/exercises/youtube/icons/subscriptions.svg">
+                <div>Subscriptions</div>
+            </div>
+            <div class="sidebar-link">
+                <img src="https://supersimple.dev/public/img/exercises/youtube/icons/originals.svg">
+                <div>Originals</div>
+            </div>
+            <div class="sidebar-link">
+                <img src="	https://supersimple.dev/public/img/exercises/youtube/icons/youtube-music.svg">
+                <div>YouTube Music</div>
+            </div>
+            <div class="sidebar-link">
+                <img src="https://supersimple.dev/public/img/exercises/youtube/icons/library.svg">
+                <div>Library</div>
+            </div>
+        </div>
+        
+        
+            <div class="video-grid">
+        <div class="video-preview">
+            <div class="thumbnail-row">
+                
+                 <img class="thumbnail" src="https://supersimple.dev/public/img/exercises/youtube/thumbnails/thumbnail-1.webp">
+                 
+                 <div class="video-time">14:20</div>
+            </div>
+            <div class="video-info-grid">
+                <div class="channel-picture">
+                    <img class="profile-picture" src="https://supersimple.dev/public/img/exercises/youtube/channel-profile-pics/channel-1.jpeg">
+                </div><div class="video-info">
+                    <p class="video-title">Talking Tech and AI with Google CEO Sundar Pichai!</p>
+        <p class="video-author">Marques Brownlee</p>
+        <p class="video-stats">3.4M views &#183; 6 months ago</p> 
+        </div>
+            </div>
+        </div>
+        <div class="video-preview">
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="https://i.ytimg.com/vi/711Bnqk8uWs/hqdefault.jpg?s…AFwAcABBg==&rs=AOn4CLCsyfJK2jyMcw_1Il-7eBnQPPg4dQ">
+                <div class="video-time">4:04</div>
+            </div>
+            <div class="video-info-grid">
+                <div class="channel-picture">
+                    <img class="profile-picture" src="https://yt3.googleusercontent.com/QdnKfhFTwM7pGtm4SqzhFOWS3fK0EZfyHB_MV3w27lMBgORgRoiL0Gr1lvJ64iKWInKE3tCgXQ=s176-c-k-c0x00ffffff-no-rj">
+                </div><div class="video-info">
+                    <p class="video-title">Samay Samjhayega | Full Version | Mohit Lalwani | Zendria</p>
+        <p class="video-author">Zendria</p>
+        <p class="video-stats">1.3M views &#183; 2 months ago</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="video-preview">
+            <div class="thumbnail-row">
+                 <img class="thumbnail" src="https://i.ytimg.com/vi/lgxLQYNVLmk/hqdefault.jpg?s…iBAKEcwDw==&rs=AOn4CLAqQ2Y5whmiNeWQrLVG_ehXGKExCg">
+                 <div class="video-time">10:11</div>
+            </div>
+            <div class="video-info-grid">
+                <div class="channel-picture">
+                    <img class="profile-picture" src=	https://yt3.ggpht.com/ytc/AIf8zZSoUBlQCmPPjNUKwP8aglOPT8GdQEK-EuJUiFi0=s48-c-k-c0x00ffffff-no-rj>
+                </div><div class=video-info>
+                    <p class="video-title">Peaceful Divine Chant by Jagjit Singh ( The Hare Krishna Maha Mantra )</p>
+        <p class="video-author">thebless4ever</p>
+        <p class="video-stats">20M views &#183; 14 years ago</p> 
+        </div>
+            </div>
+        </div>
+        <div class="video-preview">
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="https://i.ytimg.com/vi/fidPWVLwfs8/hq720.jpg?sqp=-…AFwAcABBg==&rs=AOn4CLBxrlDohSEq-PpX9zeVZt2TLHGmkg">
+                <div class="video-time">31:46</div>
+            </div>
+            <div class="video-info-grid">
+                <div class="channel-picture">
+                    <img class="profile-picture" src="https://yt3.ggpht.com/W-LbQKXkf3HJsvau1PC8jnOoryI_7AjdGGORmmpWUO4Bdb3Alem-X4fasmV43aRXRydCy3gyAig=s88-c-k-c0x00ffffff-no-rj">
+                </div><div class="video-info">
+                    <p class="video-title">Stop Vivek Bindra #StopVivekBindra | By Sandeep Maheshwari</p>
+        <p class="video-author">Sandeep Maheshwari</p>
+        <p class="video-stats">13M views &#183; 5 days ago</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="video-preview">
+            <div class="thumbnail-row">
+                 <img class="thumbnail" src=	"https://i.ytimg.com/vi/G8Y2PsGnfNA/hq720.jpg?sqp=-…AFwAcABBg==&rs=AOn4CLCDGI4PSSacbkJMbAM_98KrRXOqMA">
+                 <div class="video-time">2:51</div>
+            </div>
+            <div class="video-info-grid">
+                <div class="channel-picture">
+                    <img class="profile-picture" src="https://yt3.ggpht.com/xniQs51hPSYVzQ7K_nHfv0h5EkyywXVQkr3lrtiCYv_AsL_Yc8C6DRwxNqkZYSb-SJwRAI-m2Hs=s88-c-k-c0x00ffffff-no-nd-rj">
+                </div><div class=video-info>
+                    <p class="video-title">Emma Peters - Clandestina (Live @home)</p>
+        <p class="video-author">Emma Peters and Family</p>
+        <p class="video-stats">1.1M views &#183; 1 year ago</p> 
+        </div>
+            </div>
+        </div>
+        <div class="video-preview">
+            <div class="thumbnail-row">
+                <img class="thumbnail" src="https://i.ytimg.com/vi/dltL0mL_2wc/hq720.jpg?sqp=-…AFwAcABBg==&rs=AOn4CLAt8jHOp-8BM2ClZ09V8DgbZvKpdA">
+                    <div class="video-time">10:25</div>
+            </div>
+            <div class="video-info-grid">
+                <div class="channel-picture">
+                    <img class="profile-picture" src="https://yt3.ggpht.com/attQmCJFrLABUD2Bhm4jSl5aMklyulni5xnsSEGF3kDfHEBlkp5DeDzHGZ2ibhRE17i88WIPMzI=s48-c-k-c0x00ffffff-no-rj">
+                </div><div class="video-info">
+                    <p class="video-title">How to speak To The Universe</p>
+        <p class="video-author">Sehnend</p>
+        <p class="video-stats">1.2M views &#183; 1 month ago</p>
+                </div>
+            </div>
+        </div>
+            </div>
+    </body>
+</html>
